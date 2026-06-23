@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1782027430587",
+    "name": "Test User",
+    "email": "test@example.com",
+    "subject": "Test Project",
+    "message": "This is a test message to verify the fallback file creation.",
+    "createdAt": "2026-06-21T07:37:10.587Z"
+  },
+  {
+    "id": "1782027472143",
+    "name": "Another Test",
+    "email": "another@example.com",
+    "subject": "NFC Project",
+    "message": "This should write to fallback file without restarting the server.",
+    "createdAt": "2026-06-21T07:37:52.143Z"
+  }
+]
