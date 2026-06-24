@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TextType from './TextType';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,7 +10,6 @@ export default function About() {
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -71,38 +71,6 @@ export default function About() {
         );
       }
 
-      // Tagline typewriter text animation
-      if (taglineRef.current) {
-        const targetText = "we craft identities that command attention and refuse to let go.";
-        const typeObj = { val: 0 };
-        
-        gsap.fromTo(
-          typeObj,
-          { val: 0 },
-          {
-            val: targetText.length,
-            duration: 2.0, // Constant typing speed
-            delay: 0.2,
-            ease: "none",
-            scrollTrigger: {
-              trigger: taglineRef.current, // Trigger when the tagline itself enters the screen
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-            onUpdate: () => {
-              const progress = Math.floor(typeObj.val);
-              let result = targetText.slice(0, progress);
-              // Add typewriter cursor while animating
-              if (progress < targetText.length) {
-                result += "|";
-              }
-              if (taglineRef.current) {
-                taglineRef.current.innerText = result;
-              }
-            }
-          }
-        );
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -175,9 +143,17 @@ export default function About() {
           <div className="about-editorial-text-col" ref={textRef}>
             <div className="about-editorial-intro-wrapper">
               <div className="vertical-accent-line" />
-              <p className="about-editorial-tagline" ref={taglineRef}>
-                we craft identities that command attention and refuse to let go.
-              </p>
+              <TextType
+                text="we craft identities that command attention and refuse to let go."
+                as="p"
+                className="about-editorial-tagline"
+                typingSpeed={40}
+                pauseDuration={2000}
+                showCursor={true}
+                cursorCharacter="|"
+                startOnVisible={true}
+                loop={true}
+              />
             </div>
             
             <div className="about-editorial-body">
