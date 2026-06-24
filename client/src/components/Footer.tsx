@@ -1,4 +1,5 @@
 import MonogramLogo from './MonogramLogo';
+import TextPressure from './TextPressure';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -150,8 +151,19 @@ export default function Footer() {
       </div>
 
       {/* Giant Signature Display */}
-      <div className="footer-big-text-wrap">
-        <h1 className="footer-big-text">SA SIDDIQUE</h1>
+      <div className="footer-big-text-wrap" style={{ height: 'clamp(100px, 18vw, 240px)', padding: '20px 0' }}>
+        <TextPressure
+          text="SA SIDDIQUE"
+          flex={true}
+          alpha={false}
+          stroke={false}
+          width={true}
+          weight={true}
+          italic={true}
+          textColor="#F8F5EF"
+          minFontSize={36}
+          scale={true}
+        />
       </div>
 
       {/* Back to top */}
