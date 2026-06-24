@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BlurText from './BlurText';
 
 const FILTERS = ['All', 'Branding', 'NFC Cards', 'Web Design', 'Print', 'Social Media'];
 
@@ -77,9 +78,16 @@ export default function Portfolio() {
         >
           <div>
             <span className="section-label">Selected Work</span>
-            <h2 className="section-title">
-              Projects That <em>Speak</em>
-            </h2>
+            <BlurText
+              text="Projects That *Speak*"
+              as="h2"
+              className="section-title"
+              delay={80}
+              animateBy="words"
+              direction="bottom"
+              stepDuration={0.4}
+              threshold={0.15}
+            />
           </div>
 
           {/* Filters */}
