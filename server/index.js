@@ -131,7 +131,11 @@ app.use((err, req, res, next) => {
 });
 
 // ─── Start Server ────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📧 SMTP: ${process.env.SMTP_USER || 'not configured'}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`📧 SMTP: ${process.env.SMTP_USER || 'not configured'}`);
+  });
+}
+
+module.exports = app;

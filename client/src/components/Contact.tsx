@@ -52,7 +52,8 @@ export default function Contact() {
 
     setLoading(true);
     try {
-      await axios.post('/api/contact', form);
+      const apiBase = import.meta.env.VITE_API_URL || '';
+      await axios.post(`${apiBase}/api/contact`, form);
       showToast('success', "\u2713 Message sent! I'll get back to you soon.");
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (err: any) {
