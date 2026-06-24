@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TextType from './TextType';
+import Shuffle from './Shuffle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,7 +10,6 @@ export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -34,23 +34,7 @@ export default function About() {
         );
       }
 
-      // Title reveal staggered lines animation — scoped automatically to sectionRef by gsap.context
-      gsap.fromTo(
-        '.char-reveal',
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
+
 
       // Text block fade-in/slide-up reveal
       if (textRef.current) {
@@ -132,10 +116,34 @@ export default function About() {
           </div>
 
           {/* Large display titles */}
-          <div className="about-editorial-title-wrapper" ref={titleRef}>
-            <h2 className="about-editorial-title">
-              <span className="char-reveal block-line">Creative,</span>
-              <span className="char-reveal block-line italic-line">Refined.</span>
+          <div className="about-editorial-title-wrapper">
+            <h2 className="about-editorial-title" style={{ display: 'flex', flexDirection: 'column' }}>
+              <Shuffle
+                text="Creative,"
+                tag="span"
+                className="block-line"
+                shuffleDirection="right"
+                duration={0.5}
+                stagger={0.03}
+                shuffleTimes={3}
+                ease="power3.out"
+                triggerOnce={true}
+                triggerOnHover={true}
+                textAlign="inherit"
+              />
+              <Shuffle
+                text="Refined."
+                tag="span"
+                className="block-line italic-line"
+                shuffleDirection="left"
+                duration={0.5}
+                stagger={0.03}
+                shuffleTimes={3}
+                ease="power3.out"
+                triggerOnce={true}
+                triggerOnHover={true}
+                textAlign="inherit"
+              />
             </h2>
           </div>
 
