@@ -408,11 +408,25 @@ const Shuffle: React.FC<ShuffleProps> = ({
         setReady(true);
       };
 
+      const reset = () => {
+        teardown();
+        setReady(false);
+      };
+
       const st = ScrollTrigger.create({
         trigger: el,
         start,
         once: triggerOnce,
-        onEnter: create
+        onEnter: create,
+        onEnterBack: () => {
+          if (!triggerOnce) create();
+        },
+        onLeave: () => {
+          if (!triggerOnce) reset();
+        },
+        onLeaveBack: () => {
+          if (!triggerOnce) reset();
+        }
       });
 
       return () => {

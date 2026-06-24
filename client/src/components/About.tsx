@@ -127,7 +127,7 @@ export default function About() {
                 stagger={0.03}
                 shuffleTimes={3}
                 ease="power3.out"
-                triggerOnce={true}
+                triggerOnce={false}
                 triggerOnHover={true}
                 textAlign="inherit"
               />
@@ -140,7 +140,7 @@ export default function About() {
                 stagger={0.03}
                 shuffleTimes={3}
                 ease="power3.out"
-                triggerOnce={true}
+                triggerOnce={false}
                 triggerOnHover={true}
                 textAlign="inherit"
               />
