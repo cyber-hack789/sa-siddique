@@ -1322,8 +1322,6 @@ section {
   opacity: 1;
 }
 
-.portfolio-overlay-content {}
-
 .portfolio-cat {
   font-size: 0.7rem;
   font-weight: 600;
@@ -1463,8 +1461,6 @@ section {
   gap: clamp(40px, 6vw, 100px);
   align-items: start;
 }
-
-.contact-info {}
 
 .contact-tagline {
   font-size: 1.05rem;
