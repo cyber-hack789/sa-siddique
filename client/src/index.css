@@ -72,6 +72,9 @@ body {
 
 body.loading {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100dvh;
 }
 
 section {
@@ -353,9 +356,29 @@ section {
 }
 
 @media (max-width: 480px) {
+  .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
   .loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     width: 90%;
+    max-width: 320px;
     gap: 12px;
+    margin: 0 auto;
   }
   .loader-logo-container {
     width: 80px;
@@ -368,14 +391,17 @@ section {
   }
   .loader-brand-title {
     font-size: 1.75rem;
+    white-space: nowrap;
   }
   .loader-brand-subtitle {
     font-size: 0.62rem;
     letter-spacing: 0.2em;
+    white-space: nowrap;
   }
   .loader-text {
     font-size: 0.58rem;
     letter-spacing: 0.15em;
+    white-space: nowrap;
   }
 }
 
