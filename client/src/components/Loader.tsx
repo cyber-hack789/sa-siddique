@@ -28,11 +28,12 @@ export default function Loader({ onComplete }: LoaderProps) {
       if (progress < 1) {
         requestAnimationFrame(tick);
       } else {
-        // Brief hold, then fade out
         setTimeout(() => {
           setVisible(false);
-          document.body.classList.remove('loading');
-          setTimeout(onComplete, 700);
+          setTimeout(() => {
+            document.body.classList.remove('loading');
+            onComplete();
+          }, 800); // 800ms matches exit animation duration
         }, 300);
       }
     };
